@@ -11,11 +11,16 @@ auth.set_access_token(keys.getAccessToken(),keys.getAccessSecret())
 
 api = tweepy.API(auth)
 
-followersList = api.followers_ids("718946692")
+user_name = "UserName"
+followersList = []
 
-for follower in followersList:
-	userdetails = api.get_user(follower)
-	print(userdetails.screen_name)
+try:
+	for follower in tweepy.Cursor(api.followers, screen_name= user_name).items():
+		followersList.append(follower.screen_name)
+except Exception as e:
+	print(e)
+
+print(followersList)
 
 #Decorator
 @app.route('/')
