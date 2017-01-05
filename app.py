@@ -2,30 +2,35 @@ from flask import Flask, render_template
 
 import tweepy
 import keys
+import time
 
 app = Flask(__name__)
 
-auth = tweepy.OAuthHandler(keys.getConsumerkey(),keys.getConsumerSecret())
+auth = tweepy.OAuthHandler(keys.getConsumerkey(), keys.getConsumerSecret())
 
-auth.set_access_token(keys.getAccessToken(),keys.getAccessSecret())
+auth.set_access_token(keys.getAccessToken(), keys.getAccessSecret())
 
 api = tweepy.API(auth)
 
-user_name = "UserName"
 followersList = []
+follower = []
 
-try:
-	for follower in tweepy.Cursor(api.followers, screen_name= user_name).items():
-		followersList.append(follower.screen_name)
-except Exception as e:
-	print(e)
+user_name = "username"
 
-print(followersList)
+mCursor = tweepy.Cursor(api.followers, screen_name = user_name, count=200).items()
 
-#Decorator
-@app.route('/')
-def index():
-	return render_template("index.html")
+while True:
+    try:
+        follower = mCursor.next()
+        followersList.append(follower.screen_name)
+    except tweepy.TweepError:
+        print("Rate Limit! . Sleeping for 15 minutes...")
+        time.sleep(60 * 15)
+        follower = mCursor.next()
+        followersList.append(follower.screen_name)
+    except StopIteration:
+        break
 
-if(__name__ == "__main__"):
-	app.run(debug = True)
+if(len(followersList)):
+	print("Printing %d follower ids"%len(followersList))
+	print(followersList)
