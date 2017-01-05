@@ -4,16 +4,16 @@
 
 # returns Consumer API key
 def getConsumerkey():
-	return 'Consumer API key'
+	return 'key'
 
 # returns Consumer API secret
 def getConsumerSecret():
-	return 'Consumer API secret'
+	return 'key'
 
 # Access token
 def getAccessToken():
-	return 'Access token'
+	return 'key'
 
 # Access Secret
 def getAccessSecret():
-	return 'Access Secret'
+	return 'key'

@@ -15,7 +15,7 @@ api = tweepy.API(auth)
 followersList = []
 follower = []
 
-user_name = "username"
+user_name = "user_name"
 
 mCursor = tweepy.Cursor(api.followers, screen_name = user_name, count=200).items()
 
@@ -34,3 +34,11 @@ while True:
 if(len(followersList)):
 	print("Printing %d follower ids"%len(followersList))
 	print(followersList)
+
+#Decorator
+@app.route('/')
+def index():
+	return render_template("index.html")
+
+if(__name__ == "__main__"):
+	app.run(debug = True)
