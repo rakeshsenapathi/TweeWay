@@ -6,36 +6,37 @@ import time
 
 app = Flask(__name__)
 
-auth = tweepy.OAuthHandler(keys.getConsumerkey(), keys.getConsumerSecret())
+# auth = tweepy.OAuthHandler(keys.getConsumerkey(), keys.getConsumerSecret())
 
-auth.set_access_token(keys.getAccessToken(), keys.getAccessSecret())
+# auth.set_access_token(keys.getAccessToken(), keys.getAccessSecret())
 
-api = tweepy.API(auth)
+# api = tweepy.API(auth)
 
-followersList = []
-follower = []
+# followersList = []
+# follower = []
 
-user_name = "user_name"
+# user_name = "user_name"
 
-mCursor = tweepy.Cursor(api.followers, screen_name = user_name, count=200).items()
+# mCursor = tweepy.Cursor(api.followers, screen_name = user_name, count=200).items()
 
-while True:
-    try:
-        follower = mCursor.next()
-        followersList.append(follower.screen_name)
-    except tweepy.TweepError:
-        print("Rate Limit! . Sleeping for 15 minutes...")
-        time.sleep(60 * 15)
-        follower = mCursor.next()
-        followersList.append(follower.screen_name)
-    except StopIteration:
-        break
+# while True:
+#     try:
+#         follower = mCursor.next()
+#         followersList.append(follower.screen_name)
+#     except tweepy.TweepError:
+#         print("Rate Limit! . Sleeping for 15 minutes...")
+#         time.sleep(60 * 15)
+#         follower = mCursor.next()
+#         followersList.append(follower.screen_name)
+#     except StopIteration:
+#         break
 
-if(len(followersList)):
-	print("Printing %d follower ids"%len(followersList))
-	print(followersList)
+# if(len(followersList)):
+# 	print("Printing %d follower ids"%len(followersList))
+# 	print(followersList)https://alpha.wallhaven.cc/wallpaper/472225
 
 #Decorator
+# 	print(followersList)
 @app.route('/')
 def index():
 	return render_template("index.html")
