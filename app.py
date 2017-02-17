@@ -33,7 +33,7 @@ app = Flask(__name__)
 
 # if(len(followersList)):
 # 	print("Printing %d follower ids"%len(followersList))
-# 	print(followersList)https://alpha.wallhaven.cc/wallpaper/472225
+# 	print(followersList)
 
 #Decorator
 # 	print(followersList)
