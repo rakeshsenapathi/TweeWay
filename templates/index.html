@@ -34,6 +34,14 @@
     <![endif]-->
 </head>
 <body>
+<script>
+  function clicked(){
+    var screenName = document.getElementById("usr_name").value;
+    if(screenName.length == 0){
+      alert("Empty!");
+    }
+  }
+</script>
 <!-- Navigation
     ==========================================-->
 <nav id="menu" class="navbar navbar-default navbar-fixed-top">
@@ -109,10 +117,10 @@
     </div>
     <div class="card" style="padding: 30px; margin-left: 50px; margin-right: 50px;" >
       <div class="form-group">
-      <label for="usr">ScreenName</label>
-      <input type="text" class="form-control" id="usr">
+      <label for="usr">Screen Name</label>
+      <input type="text" class="form-control" id="usr_name">
       </div>
-      <button type="button" class="btn btn-info" style="position: center; style="margin-top: 10px; margin-bottom: 10px;" id="send_btn" onclick="function click(){alert("Working");}">Search</button>
+      <button type="button" class="btn btn-info" style="display: block; margin: 0 auto;" id="send_btn" onclick="clicked()">Search</button>
     </div>
     <div>
   </p> 
@@ -127,7 +135,7 @@
       <h2>About Us</h2>
       <hr>
       <div class="clearfix"></div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diamcommodo nibh ante facilisis.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diamcommodo nibh ante facilisis.</p> 
     </div>
     <div class="row">
       <div class="col-md-6"> <img src="img/about.jpg" class="img-responsive"> </div>
