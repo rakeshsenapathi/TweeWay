@@ -1,8 +1,9 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 import tweepy
 import keys
 import time
+import simplejson as json
 
 app = Flask(__name__)
 
@@ -37,9 +38,16 @@ app = Flask(__name__)
 
 #Decorator
 # 	print(followersList)
-@app.route('/')
+
+@app.route('/') 
 def index():
 	return render_template("index.html")
+
+
+@app.route('/receiveName', methods=['POST'])
+def receiveName():
+	mReceivedName = request.get_data()
+	return json.dumps({'status':'OK','user':mReceivedName});
 
 if(__name__ == "__main__"):
 	app.run(debug = True)

@@ -34,13 +34,38 @@
     <![endif]-->
 </head>
 <body>
+
+
 <script>
-  function clicked(){
-    var screenName = document.getElementById("usr_name").value;
-    if(screenName.length == 0){
-      alert("Empty!");
+
+    function clicked(){
+
+        var mUserName = document.getElementById('usr_name').value;
+
+        if(mUserName.length!==0){
+          alert("Data entered");
+
+          $.ajax({
+
+              url : '/receiveName',
+              data : mUserName,
+              type : 'POST',
+              success: function(response) {
+                console.log(response);
+              },
+              error: function(error) {
+                console.log(error);
+              }
+          });
+        }
+
     }
-  }
+
+
+
+
+
+
 </script>
 <!-- Navigation
     ==========================================-->
@@ -115,14 +140,29 @@
       <div class="clearfix"></div>
       <p>Enter your Twitter Screen Name to proceed further</p>
     </div>
-    <div class="card" style="padding: 30px; margin-left: 50px; margin-right: 50px;" >
-      <div class="form-group">
-      <label for="usr">Screen Name</label>
-      <input type="text" class="form-control" id="usr_name">
+
+
+
+    <form class="form-signin" action="/" method="post" role="form">
+
+      <div class="card" style="padding: 30px; margin-left: 50px; margin-right: 50px;" >
+
+
+        <div class="form-group">
+
+          <label for="usr">Screen Name</label>
+          <input type="text" class="form-control" id="usr_name" name= "usr_name">
+
+        </div>
+
+
+        <button type="button" class="btn btn-info" style="display: block; margin: 0 auto;" id="send_btn" onclick="clicked()">Search
+        </button>
+
       </div>
-      <button type="button" class="btn btn-info" style="display: block; margin: 0 auto;" id="send_btn" onclick="clicked()">Search</button>
-    </div>
-    <div>
+
+    </form>
+
   </p> 
 </div>
 </div>
