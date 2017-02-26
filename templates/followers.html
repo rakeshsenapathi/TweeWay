@@ -10,7 +10,32 @@
 
         var mFollowersList = {{ followersList | safe }} ;
 
-      	document.getElementById("mListContainer").innerHTML = mFollowersList
+        if(mFollowersList.length!==0){
+
+           results = "<table>";
+            for (var i=0; i<mFollowersList.length; i=i+2) {
+
+                results += "<tr><td>" + mFollowersList[i] + "</td>"; 
+
+                if(i+1 < mFollowersList.length){
+                                results += "<td>" + mFollowersList[i+1] + "</td></tr>";  
+                }
+
+                else{
+                             results += "<td></td></tr>";   
+                }
+            }
+
+        results += "<table><br /> <br />";
+
+         var div = document.getElementById("mListContainer");
+        div.innerHTML = results; 
+
+
+
+           // document.getElementById("mListContainer").innerHTML = mFollowersList;
+
+           }
 
         }
       	
@@ -19,7 +44,9 @@
 
       <div>
 
-            <p onclick="showList()"" id="mListContainer">Click here</p>
+            <button onclick="showList()" id="view_btn">View the List</button>
+
+            <p id="mListContainer"></p>
 
       </div>
 </body>
