@@ -43,7 +43,7 @@
         var mUserName = document.getElementById('usr_name').value;
 
         if(mUserName.length!==0){
-          alert("Data entered");
+          // alert("Data entered");
 
           $.ajax({
 
@@ -156,7 +156,8 @@
         </div>
 
 
-        <button type="button" class="btn btn-info" style="display: block; margin: 0 auto;" id="send_btn" onclick="clicked()">Search
+        <button type="button" class="btn btn-info" style="display: block; margin: 0 auto;" id="send_btn" onclick="clicked()">
+            <a href="/show">Search</a>
         </button>
 
       </div>

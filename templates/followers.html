@@ -4,12 +4,23 @@
 	<title></title>
 </head>
 <body>
-      <script type="text/javascript">
+      <script>
       	
-      	var mFollowersList = {{ followersList | safe }} ;
+        function showList(){
 
-      	alert(mFollowersList);
+        var mFollowersList = {{ followersList | safe }} ;
+
+      	document.getElementById("mListContainer").innerHTML = mFollowersList
+
+        }
+      	
 
       </script>
+
+      <div>
+
+            <p onclick="showList()"" id="mListContainer">Click here</p>
+
+      </div>
 </body>
 </html>

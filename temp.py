@@ -39,12 +39,18 @@ def receiveName():
         except StopIteration:
             break
 
-    if(len(followersList)):
-        print("Printing %d follower ids"%len(followersList))
-        print(followersList)
+    # if(len(followersList)):
+    #     print("Printing %d follower ids"%len(followersList))
+    #     print(followersList)
     
     # return json.dumps({'status':'OK','user':mReceivedName});
-    return render_template("followers.html", followersList = followersList)
+    #return render_template('followers.html', followersList = followersList)
+
+
+@app.route('/show')
+def show():
+    return render_template('followers.html', followersList = followersList)
+
     
 
 if(__name__ == "__main__"):
