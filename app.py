@@ -21,17 +21,18 @@ def index():
 def receiveName():
     mReceivedName = request.get_data()
 
-    auth = tweepy.OAuthHandler(keys.getConsumerkey(),keys.getConsumerSecret())
+    auth = tweepy.OAuthHandler(keys.getConsumerkey(), keys.getConsumerSecret())
 
-    auth.set_access_token(keys.getAccessToken(),keys.getAccessSecret())
+    auth.set_access_token(keys.getAccessToken(), keys.getAccessSecret())
     api = tweepy.API(auth)
 
-    mCursor = tweepy.Cursor(api.followers, screen_name = mReceivedName, count=200).items()
+    mCursor = tweepy.Cursor(
+        api.followers, screen_name=mReceivedName, count=200).items()
     while True:
         try:
             follower = mCursor.next()
             followersList.append(follower.screen_name)
-    
+
         except tweepy.TweepError:
             print("Rate Limit! . Sleeping for 15 minutes...")
             time.sleep(60 * 15)
