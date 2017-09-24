@@ -26,8 +26,7 @@ def receiveName():
     auth.set_access_token(keys.getAccessToken(), keys.getAccessSecret())
     api = tweepy.API(auth)
 
-    mCursor = tweepy.Cursor(
-        api.followers, screen_name=mReceivedName, count=200).items()
+    mCursor = tweepy.Cursor(api.followers, screen_name=mReceivedName, count=200).items()
     while True:
         try:
             follower = mCursor.next()
@@ -40,11 +39,11 @@ def receiveName():
             followersList.append(follower.screen_name)
         except StopIteration:
             break
-     followersList = json.dumps(followersList)
 
 @app.route('/show')
 def show():
-    return render_template('followers.html', followersList = followersList )
+    mfollowersList = json.dumps(followersList)
+    return render_template('followers.html', followersList = mfollowersList )
 
     
 
