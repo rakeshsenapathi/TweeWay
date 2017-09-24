@@ -42,8 +42,8 @@ def receiveName():
 
 @app.route('/show')
 def show():
-    mfollowersList = json.dumps(followersList)
-    return render_template('followers.html', followersList = mfollowersList )
+    followersList = json.dumps(followersList)
+    return render_template('followers.html', followersList = followersList )
 
     
 
