@@ -39,12 +39,11 @@ def receiveName():
             followersList.append(follower.screen_name)
         except StopIteration:
             break
-    json_followers = json.dumps(followersList)
-
+     followersList = json.dumps(followersList)
 
 @app.route('/show')
 def show():
-    return render_template('followers.html', followersList = json_followers )
+    return render_template('followers.html', followersList = followersList )
 
     
 
