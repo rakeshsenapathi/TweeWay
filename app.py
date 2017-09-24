@@ -9,6 +9,7 @@ app = Flask(__name__)
 
 followersList = []
 follower = []
+json_followers = []
 
 
 @app.route('/')
