@@ -29,7 +29,7 @@ def receiveName():
     while True:
         try:
             follower = mCursor.next()
-            followersList.append(follower.screen_name)
+            followersList.append(str(follower.screen_name))
     
         except tweepy.TweepError:
             print("Rate Limit! . Sleeping for 15 minutes...")
