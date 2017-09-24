@@ -29,7 +29,7 @@ def receiveName():
     while True:
         try:
             follower = mCursor.next()
-            followersList.append(str(follower.screen_name))
+            followersList.append(follower.screen_name)
     
         except tweepy.TweepError:
             print("Rate Limit! . Sleeping for 15 minutes...")
@@ -38,6 +38,7 @@ def receiveName():
             followersList.append(follower.screen_name)
         except StopIteration:
             break
+    [x.encode('utf-8') for x in followersList]
 
 @app.route('/show')
 def show():
