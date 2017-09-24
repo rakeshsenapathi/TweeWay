@@ -43,7 +43,7 @@ def receiveName():
 
 @app.route('/show')
 def show():
-    return render_template('followers.html', {"followers_array": json_followers} )
+    return render_template('followers.html', followersList = json_followers )
 
     
 
