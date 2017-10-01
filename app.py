@@ -9,6 +9,8 @@ app = Flask(__name__)
 
 follower_list = []
 
+winner_id = ""
+
 @app.route('/')
 def index():
     return render_template("index.html")
@@ -30,10 +32,10 @@ def receiveName():
         print("Rate Limit exceeded")
 
     winner_id = random.choice(follower_list)
+    return redirect(url_for('show'))
     
 @app.route('/show')
 def show():
-    json_followers = json.dumps(followersList)
     return render_template('followers.html', winner_id = winner_id ) 
 
 if(__name__ == "__main__"):
