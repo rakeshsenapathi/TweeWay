@@ -7,8 +7,7 @@ import random
 
 app = Flask(__name__)
 
-winner_id = []
-
+follower_list = []
 
 @app.route('/')
 def index():
