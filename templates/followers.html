@@ -8,9 +8,9 @@
       	
         function showList(){
 
-        var mFollowersList = {{ followersList | safe }} ;
+        var mWinnerID = {{ winner_id | safe }} ;
 
-        if(mFollowersList.length!==0){
+        // if(mFollowersList.length!==0){
 
         //    results = "<table>";
         //     for (var i=0; i<mFollowersList.length; i=i+2) {
@@ -37,7 +37,7 @@
 
         //    }
 
-        <p> mFollowersList </p>
+        document.getElementById("mListContainer").innerHTML = winner_id;
 
         }
       	

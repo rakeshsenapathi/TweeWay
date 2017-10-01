@@ -2,14 +2,12 @@ from flask import Flask, render_template, request
 
 import tweepy
 import keys
-import time
 import simplejson as json
+import random
 
 app = Flask(__name__)
 
-followersList = []
-follower = []
-json_followers = []
+winner_id = []
 
 
 @app.route('/')
@@ -26,26 +24,18 @@ def receiveName():
     auth.set_access_token(keys.getAccessToken(), keys.getAccessSecret())
     api = tweepy.API(auth)
 
-    mCursor = tweepy.Cursor(api.followers, screen_name=mReceivedName, count=200).items()
-    while True:
-        try:
-            follower = mCursor.next()
-            followersList.append(follower.screen_name)
+    try:
+        for follower in tweepy.Cursor(api.followers_ids, id="easynhx", count=5000).items():
+            follower_list.append(str(follower))
+    except tweepy.TweepError:
+        print("Rate Limit exceeded")
 
-        except tweepy.TweepError:
-            print("Rate Limit! . Sleeping for 15 minutes...")
-            time.sleep(60 * 15)
-            follower = mCursor.next()
-            followersList.append(follower.screen_name)
-        except StopIteration:
-            break
-
+    winner_id = random.choice(follower_list)
+    
 @app.route('/show')
 def show():
     json_followers = json.dumps(followersList)
-    return render_template('followers.html', followersList = json_followers )
-
-    
+    return render_template('followers.html', winner_id = winner_id ) 
 
 if(__name__ == "__main__"):
     app.run(debug = True)
