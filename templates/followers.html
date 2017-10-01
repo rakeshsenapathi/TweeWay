@@ -8,7 +8,9 @@
       	
         function showList(){
 
-        var mWinnerID = {{ winner_id | safe }} ;
+        var mWinnerName = "{{ winner_name | safe }}" ;
+        var mWinnerImg = "{{ winner_img | safe }}" ;
+
 
         // if(mFollowersList.length!==0){
 
@@ -37,7 +39,8 @@
 
         //    }
 
-        document.getElementById("mListContainer").innerHTML = winner_id;
+        document.getElementById("mNameContainer").innerHTML = mWinnerName;
+        document.getElementById("mImgContainer").src = mWinnerImg;
 
         }
       	
@@ -46,10 +49,11 @@
 
       <div>
 
-            <button onclick="showList()" id="view_btn">View the List</button>
+            <button onclick="showList()" id="view_btn" type="button">View the List</button>
 
-            <p id="mListContainer"></p>
-
+            <p id="mNameContainer"></p>
+            <img src="" id="mImgContainer" />
+  
       </div>
 </body>
 </html>
